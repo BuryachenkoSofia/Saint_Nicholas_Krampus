@@ -1,24 +1,26 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
 public class MenuControl : MonoBehaviour
 {
     public GameObject levelMenu;
     public void Awake()
     {
-        if(!PlayerPrefs.HasKey("difficultyLevel"))
+        if (!PlayerPrefs.HasKey("difficultyLevel"))
         {
             PlayerPrefs.SetInt("difficultyLevel", 0);
         }
     }
     public void StartGame(int difficultyLevel)
     {
-        if(difficultyLevel == 0){
-            SceneManager.LoadScene(2);
-        } 
-        PlayerPrefs.SetInt("difficultyLevel", difficultyLevel); /*0-6*/
-        SceneManager.LoadScene(1);
+        PlayerPrefs.SetInt("difficultyLevel", difficultyLevel);
+        if (difficultyLevel == 0)
+        {
+            SceneManager.LoadScene("Tutorial");
+        }
+        else
+        {
+            SceneManager.LoadScene(1);
+        }
     }
     public void StartButton()
     {

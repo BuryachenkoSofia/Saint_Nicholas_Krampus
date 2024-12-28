@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
         {
             Teleport();
         }
-        statusText.text = "Status: " + (status ? "Santa" : "Krampus");
+        statusText.text = "Status: " + (status ? "Saint Nicholas" : "Krampus");
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -87,6 +87,6 @@ public class Player : MonoBehaviour
     void CangeStatus(bool status)
     {
         this.status = status;
-        statusText.text = "Status: " + (status ? "Santa" : "Krampus");
+        statusText.text = "Status: " + (status ? "Saint Nicholas" : "Krampus");
     }
 }

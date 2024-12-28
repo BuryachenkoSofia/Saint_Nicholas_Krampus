@@ -18,7 +18,6 @@ public class HousesControl : MonoBehaviour
             houses[i].houseGift = Random.Range(2, 6);
             houses[i].houseText = houses[i].house.GetComponentInChildren<Canvas>().GetComponentInChildren<TMP_Text>();
             houses[i].houseText.text = houses[i].houseGift.ToString();
-
         }
     }
 }
