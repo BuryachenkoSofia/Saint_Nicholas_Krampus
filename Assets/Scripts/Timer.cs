@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour
 {
     private float time = 30.0f;
@@ -9,8 +8,8 @@ public class Timer : MonoBehaviour
     {
         if (time <= 0)
         {
-            Debug.Log("Game Over "+ ((int)time).ToString());
             time=0;
+            Time.timeScale = 0;
         }
         else
         {

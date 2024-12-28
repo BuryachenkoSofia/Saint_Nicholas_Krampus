@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GiftGenerator : MonoBehaviour
 {
@@ -7,6 +6,10 @@ public class GiftGenerator : MonoBehaviour
     public Sprite[] images = new Sprite[6];
     public void Spawn(int n){
         if(n < 1) return;
+
+        int giftsNow = GameObject.FindGameObjectsWithTag("Gift").Length;
+        if(giftsNow > 10) return;
+
         for (int i = 0; i < n; i++)
         {
             giftPrefab.GetComponent<SpriteRenderer>().sprite = images[Random.Range(0, 6)];

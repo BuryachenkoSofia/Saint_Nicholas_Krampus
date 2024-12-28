@@ -1,11 +1,32 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 public class MenuControl : MonoBehaviour
 {
-    public GameObject pauseMenu;
-    public void StartGame()
+    public GameObject levelMenu;
+    public void Awake()
     {
+        if(!PlayerPrefs.HasKey("difficultyLevel"))
+        {
+            PlayerPrefs.SetInt("difficultyLevel", 0);
+        }
+    }
+    public void StartGame(int difficultyLevel)
+    {
+        if(difficultyLevel == 0){
+            SceneManager.LoadScene(2);
+        } 
+        PlayerPrefs.SetInt("difficultyLevel", difficultyLevel); /*0-6*/
         SceneManager.LoadScene(1);
+    }
+    public void StartButton()
+    {
+        levelMenu.SetActive(true);
+    }
+    public void ExitLevelMenu()
+    {
+        levelMenu.SetActive(false);
     }
     public void Menu()
     {
@@ -29,15 +50,5 @@ public class MenuControl : MonoBehaviour
         {
             Time.timeScale = 0;
         }
-    }
-    public void PauseGame()
-    {
-        Time.timeScale = 0;
-        pauseMenu.SetActive(true);
-    }
-    public void ResumeGame()
-    {
-        Time.timeScale = 1;
-        pauseMenu.SetActive(false);
     }
 }

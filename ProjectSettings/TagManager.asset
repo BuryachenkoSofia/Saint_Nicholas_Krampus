@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Gift
   - GiftGenerator
+  - House
+  - HousesControl
   layers:
   - Default
   - TransparentFX
