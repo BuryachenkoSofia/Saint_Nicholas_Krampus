@@ -5,14 +5,14 @@ public class Player : MonoBehaviour
 {
     private const float speedStart = 6.0f;
     private float speed = 6.0f, mass = 1.0f;
-    private int score = 0;
-    private Rigidbody2D rb;
-    private Vector2 movement;
-    private Camera cam;
+    private int score = 0, spawnN = 2;
     private bool status = true;
-    public Text scoreText, timeText, statusText;
+    private Vector2 movement;
+    private Rigidbody2D rb;
+    private Camera cam;
     private GiftGenerator giftGenerator;
     private HousesControl housesControl;
+    public Text scoreText, timeText, statusText;
     public Sprite[] SaintNicholas = new Sprite[4];
     public Sprite[] Krampus = new Sprite[4];
     void Start()
@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         score = 0;
         scoreText.text = "Gift: " + score.ToString();
+        DifficultyLevelSettings();
     }
     private void FixedUpdate()
     {
@@ -85,7 +86,7 @@ public class Player : MonoBehaviour
             transform.position = new Vector2(transform.position.x, transform.position.y + 20.0f);
             cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y + 20.0f, cam.transform.position.z);
             CangeStatus(false);
-            giftGenerator.Spawn(2);
+            giftGenerator.Spawn(spawnN);
         }
         else
         {
@@ -98,5 +99,28 @@ public class Player : MonoBehaviour
     {
         this.status = status;
         statusText.text = "Status: " + (status ? "Saint Nicholas" : "Krampus");
+    }
+    void DifficultyLevelSettings()
+    {
+        switch(PlayerPrefs.GetInt("difficultyLevel")){
+            case 0:
+                spawnN = 3;
+                break;
+            case 1:
+                spawnN = 3;
+                break;
+            case 2:
+                spawnN = 2;
+                break;
+            case 3:
+                spawnN = 2;
+                break;
+            case 4:
+                spawnN = 1;
+                break;
+            case 5:
+                spawnN = 1;
+                break;
+        }
     }
 }

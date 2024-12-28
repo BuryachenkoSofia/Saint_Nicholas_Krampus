@@ -4,11 +4,12 @@ public class GiftGenerator : MonoBehaviour
 {
     public GameObject giftPrefab;
     public Sprite[] images = new Sprite[6];
-    public void Spawn(int n){
-        if(n < 1) return;
+    public void Spawn(int n)
+    {
+        if (n < 1) return;
 
         int giftsNow = GameObject.FindGameObjectsWithTag("Gift").Length;
-        if(giftsNow > 10) return;
+        if (giftsNow > n * 5) return;
 
         for (int i = 0; i < n; i++)
         {
