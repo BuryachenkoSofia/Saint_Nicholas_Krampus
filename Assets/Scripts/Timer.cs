@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
-    private float time = 30.0f;
+    private float time = 60.0f;
     public Text timeText;
     public void Update()
     {
