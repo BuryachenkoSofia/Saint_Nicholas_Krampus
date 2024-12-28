@@ -3,15 +3,19 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour
 {
-    private float time = 0.0f;
+    private float time = 30.0f;
     public Text timeText;
     public void Update()
     {
-        time += Time.deltaTime;
-        timeText.text = "Time: " + time.ToString("F2");
-    }
-    public void RestartGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (time <= 0)
+        {
+            Debug.Log("Game Over "+ ((int)time).ToString());
+            time=0;
+        }
+        else
+        {
+            time -= Time.deltaTime;
+        }
+        timeText.text = "Time: " + ((int)time).ToString();
     }
 }
