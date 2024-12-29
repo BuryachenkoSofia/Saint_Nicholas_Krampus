@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class MenuControl : MonoBehaviour
 {
     public GameObject levelMenu, pauseMenu;
-    public Text soundButtonText;
+    public Text soundButtonText, musicButtonText;
     public void Awake()
     {
         if (!PlayerPrefs.HasKey("difficultyLevel"))
@@ -19,6 +19,10 @@ public class MenuControl : MonoBehaviour
         {
             PlayerPrefs.SetInt("sound", 1);
         }
+        if (!PlayerPrefs.HasKey("music"))
+        {
+            PlayerPrefs.SetInt("music", 1);
+        }
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             if (PlayerPrefs.GetInt("sound") == 1)
@@ -28,6 +32,14 @@ public class MenuControl : MonoBehaviour
             else
             {
                 soundButtonText.text = "Sound: Off";
+            }
+            if (PlayerPrefs.GetInt("music") == 1)
+            {
+                musicButtonText.text = "Music: On";
+            }
+            else
+            {
+                musicButtonText.text = "Music: Off";
             }
         }
     }
@@ -102,5 +114,22 @@ public class MenuControl : MonoBehaviour
             PlayerPrefs.SetInt("sound", 1);
             soundButtonText.text = "Sound: On";
         }
+    }
+    public void Music()
+    {
+        if (PlayerPrefs.GetInt("music") == 1)
+        {
+            PlayerPrefs.SetInt("music", 0);
+            musicButtonText.text = "Music: Off";
+        }
+        else
+        {
+            PlayerPrefs.SetInt("music", 1);
+            musicButtonText.text = "Music: On";
+        }
+    }
+    public void Reset(){
+        PlayerPrefs.DeleteAll();
+        RestartGame();
     }
 }

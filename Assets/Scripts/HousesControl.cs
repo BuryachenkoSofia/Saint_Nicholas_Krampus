@@ -79,6 +79,7 @@ public class HousesControl : MonoBehaviour
                 return false;
             }
         }
+        PlayerPrefs.SetInt("completedLevel" + PlayerPrefs.GetInt("difficultyLevel"), 1);
         return true;
     }
 }
