@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     private float speed = 6.0f, mass = 1.0f;
     private int score = 0;
     private int spawnN = 2;
-    private bool status = true;
+    public bool status = true;
     private float lastTime;
     private Vector2 movement;
     private Rigidbody2D rb;
@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     private GiftGenerator giftGenerator;
     public HousesControl housesControl;
     private TutorialScript tutorialScript;
+    private AudioSource audioSource;
+    public AudioClip teleportSound;
     [Header("Tutorial")]
     public bool isMove = false;
     public bool isSpace = false;
@@ -29,6 +31,7 @@ public class Player : MonoBehaviour
     private Animator animator;
     void Start()
     {
+        audioSource =this.GetComponent<AudioSource>();
         housesControl = GameObject.FindWithTag("HousesControl").GetComponent<HousesControl>();
         giftGenerator = GameObject.FindWithTag("GiftGenerator").GetComponent<GiftGenerator>();
         if (PlayerPrefs.GetInt("difficultyLevel") == 0)
@@ -45,26 +48,30 @@ public class Player : MonoBehaviour
         score = 0;
         scoreText.text = "Gift: " + score.ToString();
         DifficultyLevelSettings();
-        if(PlayerPrefs.GetInt("difficultyLevel") != 0){
-            switch(PlayerPrefs.GetInt("difficultyLevel")){
-                case 1:
-                    levelText.text = "Level: Begginer";
-                    break;
-                case 2:
-                    levelText.text = "Level: Easy";
-                    break;
-                case 3:
-                    levelText.text = "Level: Medium";
-                    break;
-                case 4:
-                    levelText.text = "Level: Hard";
-                    break;
-                case 5:
-                    levelText.text = "Level: Expert";
-                    break;
-            }
+
+        switch (PlayerPrefs.GetInt("difficultyLevel"))
+        {
+            case 0:
+                levelText.text = "Level: Tutorial";
+                break;
+            case 1:
+                levelText.text = "Level: Begginer";
+                break;
+            case 2:
+                levelText.text = "Level: Easy";
+                break;
+            case 3:
+                levelText.text = "Level: Medium";
+                break;
+            case 4:
+                levelText.text = "Level: Hard";
+                break;
+            case 5:
+                levelText.text = "Level: Expert";
+                break;
         }
-        
+
+
     }
     private void FixedUpdate()
     {
@@ -102,12 +109,11 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Gift")
         {
-            if (PlayerPrefs.GetInt("difficultyLevel") == 0) {
-                if(tutorialScript.stage == 2){
-                    isGift = true;
-                }
-            }
             score++;
+            if (PlayerPrefs.GetInt("difficultyLevel") == 0 && score == 3)
+            {
+                isGift = true;
+            }
             scoreText.text = "Gift: " + score.ToString();
             Destroy(collision.gameObject);
         }
@@ -117,11 +123,6 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "House")
         {
-            if (PlayerPrefs.GetInt("difficultyLevel") == 0) {
-                if(tutorialScript.stage == 3){
-                    isHouse = true;
-                }
-            }
             int n = int.Parse(Regex.Match(collision.gameObject.name, @"\d+").Value) - 1;
             int houseGift = housesControl.houses[n].houseGift;
             if (score <= houseGift)
@@ -137,10 +138,20 @@ public class Player : MonoBehaviour
             scoreText.text = "Gift: " + score.ToString();
             housesControl.houses[n].houseGift = houseGift;
             housesControl.houses[n].houseText.text = houseGift.ToString();
+
+            if (PlayerPrefs.GetInt("difficultyLevel") == 0 && score == 0)
+            {
+                if (tutorialScript.stage == 3)
+                {
+                    isHouse = true;
+                }
+            }
         }
     }
     void Teleport()
     {
+        audioSource.clip = teleportSound;
+        audioSource.Play();
         if (transform.position.y < 5.0f)
         {
             transform.position = new Vector2(transform.position.x, transform.position.y + 20.0f);
