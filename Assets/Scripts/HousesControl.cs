@@ -11,6 +11,7 @@ public struct House
 public class HousesControl : MonoBehaviour
 {
     public House[] houses = new House[7];
+    public GameObject winPanel;
     private int n=2,m=5;
     void Start()
     {
@@ -47,5 +48,20 @@ public class HousesControl : MonoBehaviour
             houses[i].houseText = houses[i].house.GetComponentInChildren<Canvas>().GetComponentInChildren<TMP_Text>();
             houses[i].houseText.text = houses[i].houseGift.ToString();
         }
+    }
+    void Update()
+    {
+        if (isWin()){
+            winPanel.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
+    bool isWin(){
+        for (int i = 0; i < houses.Length; i++){
+            if(houses[i].houseGift != 0){
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -5,6 +5,7 @@ public class Timer : MonoBehaviour
 {
     private float time = 60.0f;
     public Text timeText;
+    public GameObject losePanel;
     void Start()
     {
         switch (PlayerPrefs.GetInt("difficultyLevel"))
@@ -35,6 +36,7 @@ public class Timer : MonoBehaviour
         {
             time=0;
             Time.timeScale = 0;
+            losePanel.SetActive(true);
         }
         else
         {

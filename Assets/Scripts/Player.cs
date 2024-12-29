@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
         {
             Teleport();
         }
-        statusText.text = "Status: " + (status ? "Saint Nicholas" : "Krampus");
+        statusText.text = status ? "Saint Nicholas" : "Krampus";
         if (status)
         {
             rb.gameObject.GetComponent<SpriteRenderer>().sprite = SaintNicholas[0];
@@ -102,7 +102,8 @@ public class Player : MonoBehaviour
     }
     void DifficultyLevelSettings()
     {
-        switch(PlayerPrefs.GetInt("difficultyLevel")){
+        switch (PlayerPrefs.GetInt("difficultyLevel"))
+        {
             case 0:
                 spawnN = 3;
                 break;
