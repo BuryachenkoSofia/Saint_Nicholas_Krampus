@@ -107,8 +107,10 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Gift")
         {
-            audioSource.clip = giftSound;
-            audioSource.Play();
+            if(PlayerPrefs.GetInt("sound")==1){
+                audioSource.clip = giftSound;
+                audioSource.Play();
+            }
             score++;
             if (PlayerPrefs.GetInt("difficultyLevel") == 0 && score == 3)
             {
@@ -125,7 +127,7 @@ public class Player : MonoBehaviour
         {
             int n = int.Parse(Regex.Match(collision.gameObject.name, @"\d+").Value) - 1;
             int houseGift = housesControl.houses[n].houseGift;
-            if(houseGift!=0)
+            if(houseGift!=0 &&PlayerPrefs.GetInt("sound")==1)
             {
                 audioSource.clip = houseSound;
                 audioSource.Play();
@@ -155,8 +157,10 @@ public class Player : MonoBehaviour
     }
     void Teleport()
     {
-        audioSource.clip = teleportSound;
-        audioSource.Play();
+        if(PlayerPrefs.GetInt("sound")==1){
+            audioSource.clip = teleportSound;
+            audioSource.Play();
+        }
         if (transform.position.y < 5.0f)
         {
             transform.position = new Vector2(transform.position.x, transform.position.y + 20.0f);
