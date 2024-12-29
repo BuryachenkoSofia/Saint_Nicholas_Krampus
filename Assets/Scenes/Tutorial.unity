@@ -7083,6 +7083,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1982171678}
     - target: {fileID: 1819468632885895096, guid: 2c7c9d9c572d1d747acc90078c410930, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1982171680}
+    - target: {fileID: 1819468632885895096, guid: 2c7c9d9c572d1d747acc90078c410930, type: 3}
       propertyPath: timeText
       value: 
       objectReference: {fileID: 172128981}
@@ -7189,13 +7193,43 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5597385278073537852, guid: 2c7c9d9c572d1d747acc90078c410930, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1982171680}
   m_SourcePrefab: {fileID: 100100000, guid: 2c7c9d9c572d1d747acc90078c410930, type: 3}
 --- !u!50 &1982171678 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 5997208159637554837, guid: 2c7c9d9c572d1d747acc90078c410930, type: 3}
   m_PrefabInstance: {fileID: 1982171677}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1982171679 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5597385278073537852, guid: 2c7c9d9c572d1d747acc90078c410930, type: 3}
+  m_PrefabInstance: {fileID: 1982171677}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1982171680
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982171679}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2c6f5e38ab1c5054a87d710e48cbbdf8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2017688525
 GameObject:
   m_ObjectHideFlags: 0

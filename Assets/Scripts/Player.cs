@@ -15,10 +15,12 @@ public class Player : MonoBehaviour
     public Text scoreText, timeText, statusText;
     public Sprite[] SaintNicholas = new Sprite[4];
     public Sprite[] Krampus = new Sprite[4];
+    private Animator animator;
     void Start()
     {
         housesControl = GameObject.FindWithTag("HousesControl").GetComponent<HousesControl>();
         giftGenerator = GameObject.FindWithTag("GiftGenerator").GetComponent<GiftGenerator>();
+        animator = GetComponent<Animator>();
         cam = Camera.main;
         rb = this.GetComponent<Rigidbody2D>();
         score = 0;
@@ -40,14 +42,8 @@ public class Player : MonoBehaviour
             Teleport();
         }
         statusText.text = status ? "Saint Nicholas" : "Krampus";
-        if (status)
-        {
-            rb.gameObject.GetComponent<SpriteRenderer>().sprite = SaintNicholas[0];
-        }
-        else
-        {
-            rb.gameObject.GetComponent<SpriteRenderer>().sprite = Krampus[0];
-        }
+        animator.SetBool("Krampus", !status);
+        animator.SetFloat("Move", Mathf.Abs(movement.x) + Mathf.Abs(movement.y));
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
