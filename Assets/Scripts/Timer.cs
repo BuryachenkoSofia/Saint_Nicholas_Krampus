@@ -11,7 +11,7 @@ public class Timer : MonoBehaviour
         switch (PlayerPrefs.GetInt("difficultyLevel"))
         {
             case 0:
-                time = 120.0f;
+                time = 600.0f;
                 break;
             case 1:
                 time = 60.0f;
@@ -26,7 +26,7 @@ public class Timer : MonoBehaviour
                 time = 60f;
                 break;
             case 5:
-                time = 45f;
+                time = 60f;
                 break;
         }
     }
@@ -34,7 +34,7 @@ public class Timer : MonoBehaviour
     {
         if (time <= 0)
         {
-            time=0;
+            time = 0;
             Time.timeScale = 0;
             losePanel.SetActive(true);
         }
