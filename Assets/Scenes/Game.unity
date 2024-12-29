@@ -383,10 +383,22 @@ PrefabInstance:
       propertyPath: housesControl
       value: 
       objectReference: {fileID: 1269577619}
+    - target: {fileID: 1819468632885895096, guid: 2c7c9d9c572d1d747acc90078c410930, type: 3}
+      propertyPath: teleportSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9cde20b4791b37b4e9486fffd601fc2a, type: 3}
     - target: {fileID: 5597385278073537852, guid: 2c7c9d9c572d1d747acc90078c410930, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8233891931289302937, guid: 2c7c9d9c572d1d747acc90078c410930, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 9cde20b4791b37b4e9486fffd601fc2a, type: 3}
+    - target: {fileID: 8233891931289302937, guid: 2c7c9d9c572d1d747acc90078c410930, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9cde20b4791b37b4e9486fffd601fc2a, type: 3}
     - target: {fileID: 8784553976246820362, guid: 2c7c9d9c572d1d747acc90078c410930, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -107,6 +107,8 @@ MonoBehaviour:
   status: 1
   housesControl: {fileID: 0}
   teleportSound: {fileID: 8300000, guid: 9cde20b4791b37b4e9486fffd601fc2a, type: 3}
+  giftSound: {fileID: 8300000, guid: 5f5c1bdbf73411f4daa4ee0cd34bc426, type: 3}
+  houseSound: {fileID: 8300000, guid: e6084d771c451c84da983791a94a579e, type: 3}
   isMove: 0
   isSpace: 0
   isGift: 0
@@ -220,10 +222,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9cde20b4791b37b4e9486fffd601fc2a, type: 3}
-  m_Resource: {fileID: 8300000, guid: 9cde20b4791b37b4e9486fffd601fc2a, type: 3}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 2ed1bffd8bdae7e43a89e8c19c09039b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.402
   m_Pitch: 1
   Loop: 0
   Mute: 0

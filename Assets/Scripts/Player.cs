@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     public HousesControl housesControl;
     private TutorialScript tutorialScript;
     private AudioSource audioSource;
-    public AudioClip teleportSound;
+    public AudioClip teleportSound, giftSound, houseSound;
     [Header("Tutorial")]
     public bool isMove = false;
     public bool isSpace = false;
@@ -70,8 +70,6 @@ public class Player : MonoBehaviour
                 levelText.text = "Level: Expert";
                 break;
         }
-
-
     }
     private void FixedUpdate()
     {
@@ -109,6 +107,8 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Gift")
         {
+            audioSource.clip = giftSound;
+            audioSource.Play();
             score++;
             if (PlayerPrefs.GetInt("difficultyLevel") == 0 && score == 3)
             {
@@ -125,6 +125,11 @@ public class Player : MonoBehaviour
         {
             int n = int.Parse(Regex.Match(collision.gameObject.name, @"\d+").Value) - 1;
             int houseGift = housesControl.houses[n].houseGift;
+            if(houseGift!=0)
+            {
+                audioSource.clip = houseSound;
+                audioSource.Play();
+            }
             if (score <= houseGift)
             {
                 houseGift -= score;
