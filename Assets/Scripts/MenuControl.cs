@@ -85,7 +85,15 @@ public class MenuControl : MonoBehaviour
     }
     public void RestartGame()
     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
+    }
+    public void NextLevel()
+    {
+        if (PlayerPrefs.GetInt("difficultyLevel") < 5)
+        {
+            PlayerPrefs.SetInt("difficultyLevel", PlayerPrefs.GetInt("difficultyLevel") + 1);
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
     }
@@ -128,7 +136,8 @@ public class MenuControl : MonoBehaviour
             musicButtonText.text = "Music: On";
         }
     }
-    public void Reset(){
+    public void Reset()
+    {
         PlayerPrefs.DeleteAll();
         RestartGame();
     }
