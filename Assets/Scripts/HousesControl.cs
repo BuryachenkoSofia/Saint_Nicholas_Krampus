@@ -72,14 +72,15 @@ public class HousesControl : MonoBehaviour
     }
     public bool isWin()
     {
+        bool win = true;
         for (int i = 0; i < houses.Length; i++)
         {
             if (houses[i].houseGift != 0)
             {
-                return false;
+                win = false;
             }
         }
-        PlayerPrefs.SetInt("completedLevel" + PlayerPrefs.GetInt("difficultyLevel"), 1);
-        return true;
+        if (win) PlayerPrefs.SetInt("completedLevel" + PlayerPrefs.GetInt("difficultyLevel"), 1);
+        return win;
     }
 }
