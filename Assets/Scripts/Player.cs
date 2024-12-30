@@ -7,16 +7,16 @@ public class Player : MonoBehaviour
     private float speed = 6.0f, mass = 1.0f;
     private int score = 0;
     private int spawnN = 2;
-    public bool status = true;
     private float lastTime;
     private Vector2 movement;
     private Rigidbody2D rb;
     private Camera cam;
     private GiftGenerator giftGenerator;
-    public HousesControl housesControl;
     private TutorialScript tutorialScript;
     private AudioSource audioSource;
+    public bool status = true;
     public AudioClip teleportSound, giftSound, houseSound;
+    public HousesControl housesControl;
     [Header("Tutorial")]
     public bool isMove = false;
     public bool isSpace = false;
